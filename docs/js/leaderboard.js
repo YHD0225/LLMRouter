@@ -2,7 +2,7 @@
  *
  * Dense-table style: no fills, no tints, no chart marks. Ranking is carried by
  * sort order; the best and runner-up per column are marked typographically
- * (bold / underline) so nothing depends on colour.
+ * (bold / underline), matching the paper tables without relying on colour.
  */
 
 const XRB_DATA_URL = new URL("../data/leaderboard.json", document.currentScript.src);
@@ -39,12 +39,12 @@ function xrbRender(root, data) {
     if (family !== "all" && !families.includes(family)) family = "all";
 
     // Best / runner-up per column, computed over the whole track so filtering
-    // never moves the marks.
+    // never moves the marks. Ties receive the same paper-style mark.
     const columnTop = {};
     t.columns.forEach((c) => {
       columnTop[c.id] = [...new Set(t.rows.map((r) => r.scores?.[c.id]).filter((v) => v != null))]
         .sort((a, b) => b - a)
-        .slice(0, 3);
+        .slice(0, 2);
     });
 
     let shown = t.rows

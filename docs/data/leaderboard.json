@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-04",
-  "source": "xRouteBench (LLMRouter paper, Tables 2–4)",
+  "updated": "2026-08-05",
+  "source": "xRouteBench (LLMRouter Overleaf source, Tables 2–5)",
   "tables": [
     {
       "id": "main",
@@ -10,7 +10,7 @@
       "columns": [
         {
           "id": "general",
-          "label": "General NLP"
+          "label": "Generic LLM tasks"
         },
         {
           "id": "locomo",
@@ -25,17 +25,17 @@
         {
           "id": "geometry3k",
           "label": "Geometry3K",
-          "group": "Multimodal"
+          "group": "Vision"
         },
         {
           "id": "mathvista",
           "label": "MathVista",
-          "group": "Multimodal"
+          "group": "Vision"
         },
         {
           "id": "video",
           "label": "Video",
-          "group": "Multimodal"
+          "group": "Vision"
         },
         {
           "id": "timeseries",
@@ -249,7 +249,7 @@
     {
       "id": "personalized",
       "label": "Personalized track",
-      "note": "Accuracy on the human-preference split. Higher is better.",
+      "note": "Persona-conditioned LLM-judge accuracy on the personalized track. Higher is better.",
       "defaultSort": "acc",
       "columns": [
         {
@@ -304,7 +304,7 @@
           "router": "PersonalizedRouter",
           "family": "Personalized",
           "scores": {
-            "acc": 57.86
+            "acc": 67.86
           }
         },
         {
@@ -467,6 +467,137 @@
           "family": "Single-turn",
           "scores": {
             "acc": 27.97
+          }
+        }
+      ],
+      "unit": "%"
+    },
+    {
+      "id": "multiagent",
+      "label": "Multi-agent systems",
+      "note": "Generic LLM tasks test split when every node in each topology is routed. Higher is better.",
+      "defaultSort": "avg",
+      "columns": [
+        {
+          "id": "star",
+          "label": "Star"
+        },
+        {
+          "id": "tree",
+          "label": "Tree"
+        },
+        {
+          "id": "graph",
+          "label": "Graph"
+        },
+        {
+          "id": "chain",
+          "label": "Chain"
+        },
+        {
+          "id": "plan_exec_sum",
+          "label": "Plan-Exec-Sum"
+        },
+        {
+          "id": "avg",
+          "label": "Avg"
+        }
+      ],
+      "rows": [
+        {
+          "router": "Largest-LLM",
+          "family": "Rule-based",
+          "scores": {
+            "star": 69.0,
+            "tree": 67.0,
+            "graph": 77.2,
+            "chain": 69.0,
+            "plan_exec_sum": 75.2,
+            "avg": 71.48
+          }
+        },
+        {
+          "router": "kNNRouter",
+          "family": "Single-turn",
+          "scores": {
+            "star": 74.8,
+            "tree": 78.6,
+            "graph": 78.6,
+            "chain": 76.6,
+            "plan_exec_sum": 71.8,
+            "avg": 76.08
+          }
+        },
+        {
+          "router": "SVMRouter",
+          "family": "Single-turn",
+          "scores": {
+            "star": 76.2,
+            "tree": 75.6,
+            "graph": 80.0,
+            "chain": 74.4,
+            "plan_exec_sum": 75.2,
+            "avg": 76.28
+          }
+        },
+        {
+          "router": "MLPRouter",
+          "family": "Single-turn",
+          "scores": {
+            "star": 75.4,
+            "tree": 76.6,
+            "graph": 76.8,
+            "chain": 78.0,
+            "plan_exec_sum": 71.4,
+            "avg": 75.64
+          }
+        },
+        {
+          "router": "MFRouter",
+          "family": "Single-turn",
+          "scores": {
+            "star": 75.4,
+            "tree": 74.2,
+            "graph": 81.0,
+            "chain": 78.6,
+            "plan_exec_sum": 73.2,
+            "avg": 76.48
+          }
+        },
+        {
+          "router": "EloRouter",
+          "family": "Single-turn",
+          "scores": {
+            "star": 73.8,
+            "tree": 72.4,
+            "graph": 78.6,
+            "chain": 76.6,
+            "plan_exec_sum": 75.2,
+            "avg": 75.32
+          }
+        },
+        {
+          "router": "GraphRouter",
+          "family": "Single-turn",
+          "scores": {
+            "star": 68.2,
+            "tree": 70.8,
+            "graph": 66.2,
+            "chain": 72.0,
+            "plan_exec_sum": 69.0,
+            "avg": 69.24
+          }
+        },
+        {
+          "router": "RouterDC",
+          "family": "Single-turn",
+          "scores": {
+            "star": 77.6,
+            "tree": 79.6,
+            "graph": 74.2,
+            "chain": 72.0,
+            "plan_exec_sum": 76.2,
+            "avg": 75.92
           }
         }
       ],
