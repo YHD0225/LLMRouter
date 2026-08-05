@@ -4,238 +4,129 @@ hide:
   - navigation
 ---
 
-
-<div class="home-brand" align="center">
-  <img src="assets/logo.png" alt="LLMRouter Logo" width="200">
-</div>
-
-
-<h1 class="home-title" align="center">🚀 LLMRouter: An Open-Source Library for LLM Routing</h1>
-
-<nav class="home-action-nav" aria-label="Project links">
-  <a href="./">Home</a>
-  <a href="leaderboard/">Leaderboard</a>
-  <a href="getting-started/installation/">Getting started</a>
-  <a href="learn/">Learn LLMRouter</a>
-  <a href="tutorials/">Tutorials</a>
-  <a href="api/">API Reference</a>
-</nav>
-
-<p align="center">
-  <a href="https://www.python.org/downloads/release/python-3109/">
-    <img src="https://img.shields.io/badge/python-%E2%89%A53.10-blue" alt="Python 3.10">
-  </a>
-  <a href="https://github.com/ulab-uiuc/LLMRouter/pulls">
-    <img src="https://img.shields.io/badge/PRs-welcome-orange" alt="PRs Welcome">
-  </a>
-  <a href="https://join.slack.com/t/llmrouteropen-ri04588/shared_invite/zt-3jz3cc6d1-ncwKEHvvWe0OczHx7K5c0g">
-    <img src="https://img.shields.io/badge/Slack-Join%20Us-4A154B?logo=slack&logoColor=white" alt="Slack">
-  </a>
-  <a href="https://github.com/ulab-uiuc/LLMRouter/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
-  </a>
-</p>
-
-
-## Introduction ✨
-
-<div style="text-align:center;">
-    <img src="assets/llmrouter_.png" style="width: 100%; height: auto;">
-</div>
-
-**LLMRouter** is an intelligent routing system designed to optimize LLM inference by dynamically selecting the most suitable model for each query. To achieve intelligent routing, it defines:
-
-- 🚀 **Smart Routing**: Automatically routes queries to the optimal LLM based on task complexity, cost, and performance requirements.
-- 📊 **Multiple Router Models**: Support for **over 16 routing models**, including KNN, SVM, MLP, Matrix Factorization, Elo Rating, Graph-based routers, BERT-based routers, Hybrid probabilistic routers, transformed-score routers, multi-round routers, and many additional advanced strategies.
-- 🛠️ **Unified CLI**: Complete command-line interface for training, inference, and interactive chat with Gradio-based UI.
-- 📈 **Data Generation Pipeline**: Complete pipeline for generating training data from 11 benchmark datasets with automatic API calling and evaluation.
-
-
-## News 📰
-
-- 🚀 **[2025-12]**: **LLMRouter** is officially released - ship smarter 🧠, cost-aware 💸 LLM routing with 16+ routers 🧭, a unified `llmrouter` CLI 🛠️, and a plugin workflow for custom routers 🧩.
-
-
-## Quick Navigation 🔗
-
-| Section | Description |
-|---------|-------------|
-| [Get Started](#get-started-) | Installation and quick setup guide |
-| [Supported Routers](#supported-routers-) | Full list of 16+ routers with documentation |
-| [Tutorials](tutorials/index.md) | Jupyter notebook tutorials for each router |
-| [API Reference](api/index.md) | Complete API documentation |
-
-
-## Supported Routers 🧭
-
-### Single-Round Routers
-| Router | Training | Inference | Description |
-|--------|:--------:|:---------:|-------------|
-| KNN Router | ✅ | ✅ | K-Nearest Neighbors based routing |
-| SVM Router | ✅ | ✅ | Support Vector Machine based routing |
-| MLP Router | ✅ | ✅ | Multi-Layer Perceptron based routing |
-| MF Router | ✅ | ✅ | Matrix Factorization based routing |
-| Elo Router | N/A | ✅ | Elo Rating based routing |
-| DC Router | ✅ | ✅ | Dual Contrastive learning based routing |
-| AutoMix | N/A | ✅ | Automatic model mixing |
-| HybridLLM | ✅ | ✅ | Hybrid LLM routing strategy |
-| Graph Router | ✅ | ✅ | Graph-based routing |
-| CausalLM Router | ✅ | ✅ | Causal Language Model router |
-
-### Multi-Round Routers
-| Router | Training | Inference | Description |
-|--------|:--------:|:---------:|-------------|
-| Router-R1 | [External](https://github.com/ulab-uiuc/Router-R1) | ✅ | RL-based multi-round routing with reasoning |
-
-### Personalized Routers
-| Router | Training | Inference | Description |
-|--------|:--------:|:---------:|-------------|
-| GMT Router | ✅ | ✅ | Graph-based personalized router with user preference learning |
-
-### Agentic Routers
-| Router | Training | Inference | Description |
-|--------|:--------:|:---------:|-------------|
-| KNN Multi-Round | ✅ | ✅ | KNN-based agentic router for complex tasks |
-| LLM Multi-Round | N/A | ✅ | LLM-based agentic router for complex tasks |
-
-See the [full router documentation](api/routers.md) for detailed usage.
-
-
-## Get Started 🚀
-
-### Installation
-
-=== "From Source (Recommended)"
-
-    ```bash
-    # Clone the repository
-    git clone https://github.com/ulab-uiuc/LLMRouter.git
-    cd LLMRouter
-
-    # Create and activate virtual environment
-    conda create -n llmrouter python=3.10
-    conda activate llmrouter
-
-    # Install the package
-    pip install -e .
-    ```
-
-=== "From PyPI"
-
-    ```bash
-    pip install llmrouter-lib
-    ```
-
-### Setting Up API Keys 🔑
-
-LLMRouter requires API keys to make LLM API calls for inference, chat, and data generation. Set the `API_KEYS` environment variable:
-
-=== "JSON Array (Recommended)"
-
-    ```bash
-    export API_KEYS='["your-key-1", "your-key-2", "your-key-3"]'
-    ```
-
-=== "Comma-Separated"
-
-    ```bash
-    export API_KEYS='key1,key2,key3'
-    ```
-
-=== "Single Key"
-
-    ```bash
-    export API_KEYS='your-api-key'
-    ```
-
-!!! note "Important"
-    - API keys are used for **inference**, **chat interface**, and **data generation**
-    - Multiple keys enable automatic load balancing across API calls
-    - For persistent setup, add the export command to `~/.bashrc` or `~/.zshrc`
-
-### Configuring API Endpoints 🌐
-
-API endpoints can be specified at two levels (resolved in priority order):
-
-| Priority | Location | Description |
-|:--------:|----------|-------------|
-| 1 | Per-Model | `api_endpoint` field in LLM candidate JSON (`default_llm.json`) |
-| 2 | Router-Level | `api_endpoint` field in router YAML config |
-
-??? example "Per-Model Endpoints (default_llm.json)"
-    ```json
-    {
-      "qwen2.5-7b-instruct": {
-        "model": "qwen/qwen2.5-7b-instruct",
-        "api_endpoint": "https://integrate.api.nvidia.com/v1"
-      },
-      "custom-model": {
-        "model": "custom/model-name",
-        "api_endpoint": "https://api.customprovider.com/v1"
-      }
-    }
-    ```
-
-??? example "Router-Level Endpoint (YAML config)"
-    ```yaml
-    api_endpoint: 'https://integrate.api.nvidia.com/v1'  # Fallback for all models
-    ```
-
-### Quick Test
-
-```bash
-# Route a single query (no API calls needed)
-llmrouter infer --router knnrouter \
-  --config configs/model_config_test/knnrouter.yaml \
-  --query "What is machine learning?" \
-  --route-only
-```
-
-
-## Interactive Chat Demo 💬
-
-<div style="text-align:center;">
-    <img src="assets/llmrouter_chat.gif" style="width: 100%; height: auto;">
-</div>
-
-Launch the Gradio-based chat interface:
-
-```bash
-llmrouter chat --router knnrouter --config configs/model_config_test/knnrouter.yaml
-```
-
-
-## Extending with Custom Routers 🧩
-
-LLMRouter supports a plugin system so you can add custom routers under `custom_routers/` and use them via the same CLI without modifying core code.
-
-??? example "Minimal Custom Router Example"
-    ```python
-    from llmrouter.models.meta_router import MetaRouter
-    import torch.nn as nn
-
-    class MyRouter(MetaRouter):
-        def __init__(self, yaml_path: str):
-            super().__init__(model=nn.Identity(), yaml_path=yaml_path)
-
-        def route_single(self, query_input: dict) -> dict:
-            return {"model_name": "your_model_name"}
-
-        def route_batch(self, batch: list) -> list:
-            return [self.route_single(x) for x in batch]
-    ```
-
-
-## Citation 📚
-
-If you find LLMRouter useful for your research or projects, please cite:
-
-```bibtex
-@misc{llmrouter2025,
-  title        = {LLMRouter: An Open-Source Library for LLM Routing},
+<section class="llmr-hero">
+  <div class="llmr-hero-logo">
+    <img src="assets/logo.png" alt="LLMRouter logo">
+  </div>
+  <p class="llmr-kicker">A unified library, evaluation suite, and analysis platform for LLM routing</p>
+  <h1>LLMRouter</h1>
+  <p class="llmr-subtitle">
+    A modular open-source framework for training, evaluating, and deploying LLM routers that select the right model for each query under quality and cost constraints.
+  </p>
+  <div class="llmr-hero-actions" aria-label="Project links">
+    <a href="leaderboard/">Leaderboard</a>
+    <a href="https://github.com/YHD0225/LLMRouter" target="_blank" rel="noopener">Code</a>
+  </div>
+  <div class="llmr-badges" aria-label="Project badges">
+    <span>16+ routers</span>
+    <span>3 routing families</span>
+    <span>xRouteBench</span>
+    <span>Quality-cost evaluation</span>
+  </div>
+</section>
+
+<section class="llmr-section llmr-overview">
+  <h2>Overview</h2>
+  <p>
+    No single large language model is optimal across all queries, domains, and budgets. LLMRouter treats model selection as a routing problem: given a query, history, user context, and candidate model pool, the router decides which model should answer so that deployments can preserve response quality while controlling inference cost.
+  </p>
+  <p>
+    The project contributes both a library and an evaluation protocol. The library standardizes router implementation behind common training, inference, data generation, and evaluation interfaces. The benchmark, xRouteBench, evaluates routers across general NLP, memory-augmented reasoning, multimodal understanding, video, time-series, personalized, and real-user settings.
+  </p>
+</section>
+
+<section class="llmr-figure-section">
+  <figure>
+    <img src="assets/llmrouter_.png" alt="LLMRouter system overview">
+    <figcaption>
+      LLMRouter connects data generation, router training, inference, and benchmark evaluation under one reusable workflow.
+    </figcaption>
+  </figure>
+</section>
+
+<section class="llmr-section">
+  <h2>What LLMRouter Provides</h2>
+  <div class="llmr-feature-grid">
+    <article>
+      <span>01</span>
+      <h3>Unified Routing Formulation</h3>
+      <p>
+        LLM routing is formulated as a sequential decision process with five components: context encoder, model encoder, scoring function, decision rule, and learning signal.
+      </p>
+    </article>
+    <article>
+      <span>02</span>
+      <h3>Router Families</h3>
+      <p>
+        Existing methods are organized into single-turn, multi-turn, and personalized routing families, making router behavior easier to compare and extend.
+      </p>
+    </article>
+    <article>
+      <span>03</span>
+      <h3>Modular Library</h3>
+      <p>
+        New routers can be added by implementing routing logic and a loss function, while the surrounding data, training, inference, and evaluation pipeline stays shared.
+      </p>
+    </article>
+    <article>
+      <span>04</span>
+      <h3>Standardized Benchmark</h3>
+      <p>
+        xRouteBench runs routers under a consistent candidate model pool, metric suite, and cost-aware protocol for fair comparison.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="llmr-section llmr-framework">
+  <h2>Unified Routing Framework</h2>
+  <div class="llmr-framework-grid">
+    <div>
+      <h3>Routing state</h3>
+      <p>Query, user context, interaction history, and candidate model information are represented as a state that can support both one-shot and multi-step routing.</p>
+    </div>
+    <div>
+      <h3>Routing action</h3>
+      <p>The router can dispatch a query to one or more candidate models, or terminate and aggregate collected responses in multi-turn settings.</p>
+    </div>
+    <div>
+      <h3>Optimization goal</h3>
+      <p>The objective balances task-specific response quality with inference cost, enabling evaluation under different budget regimes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="llmr-section">
+  <h2>xRouteBench</h2>
+  <p>
+    xRouteBench is designed to evaluate whether a router can generalize across task types and deployment conditions. It spans general NLP, memory-augmented tasks, image and video understanding, time-series reasoning, human-preference personalization, and real-user traces.
+  </p>
+  <div class="llmr-track-grid">
+    <span>General NLP</span>
+    <span>Memory</span>
+    <span>Multimodal</span>
+    <span>Video</span>
+    <span>Time-series</span>
+    <span>Personalized</span>
+    <span>Real users</span>
+  </div>
+</section>
+
+<section class="llmr-section">
+  <h2>Key Findings</h2>
+  <div class="llmr-finding-list">
+    <p><strong>Learned routing improves over fixed-model baselines.</strong> The empirical study finds a 14.6% relative improvement over the strongest fixed-model baseline.</p>
+    <p><strong>Cost changes the ranking.</strong> Router rankings can reverse under tighter cost constraints, favoring lightweight routing strategies in budget-sensitive settings.</p>
+    <p><strong>Personalization matters.</strong> User-conditioned routing delivers consistent gains when preference or user context is available.</p>
+  </div>
+</section>
+
+<section class="llmr-section">
+  <h2>Citation</h2>
+  <pre><code>@misc{feng2026llmrouter,
+  title        = {LLMRouter: A Unified Library, Evaluation, and Analysis for LLM Routing},
   author       = {Tao Feng and Haozhen Zhang and Zijie Lei and Haodong Yue and Chongshan Lin and Jiaxuan You},
-  year         = {2025},
-  howpublished = {\url{https://github.com/ulab-uiuc/LLMRouter}},
-  note         = {GitHub repository}
-}
-```
+  year         = {2026},
+  howpublished = {\url{https://github.com/ulab-uiuc/LLMRouter}}
+}</code></pre>
+</section>

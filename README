@@ -16,12 +16,19 @@ Or you may edit using the IDE.
 
 ## 2. Deploy to GitHub Pages
 
+This branch deploys through GitHub Actions. In repository **Settings → Pages**,
+set **Source** to **GitHub Actions**.
+
+Every push to `website_v2` runs `.github/workflows/pages.yml` and publishes the
+MkDocs build artifact.
+
 ```bash
 # From project root
-mkdocs gh-deploy
+python -m pip install -r docs-requirements.txt
+mkdocs build
 ```
 
-Your updated site will be live at: `https://ulab-uiuc.github.io/LLMRouter/`. This process may take 10~20 seconds.
+Your updated site will be live at: `https://yhd0225.github.io/LLMRouter/`.
 
 ## 3. Update RunLLM
 
@@ -32,4 +39,3 @@ RunLLM automatically syncs with your deployed documentation. To trigger an updat
    - Go to [RunLLM Dashboard](https://runllm.com)
    - Navigate to your project settings
    - Click "Sync Documentation"
-
